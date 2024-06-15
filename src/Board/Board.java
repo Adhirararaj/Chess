@@ -43,7 +43,7 @@ public class Board extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Tile clicked: (" + tile.getX() + ", " + tile.getY() + ")");
+            System.out.println("Tile clicked: (" + (tile.getX()+1) + ", " + (tile.getY()+1)+ ")");
         }
 
         

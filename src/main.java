@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+import java.awt.*;
 
 import Board.Board;
 
@@ -10,6 +11,8 @@ public class main {
         frame.add(new Board());
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new GridBagLayout());
+        frame.getContentPane().setBackground(new Color(204, 153, 102));
         frame.setVisible(true);
     }
 }
