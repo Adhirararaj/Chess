@@ -1,5 +1,7 @@
 import javax.swing.JFrame;
 
+import Board.Board;
+
 public class main {
 
     public static void main(String[] args) {

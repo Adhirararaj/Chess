@@ -1,15 +1,14 @@
+package Board;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
 import java.awt.*;
-// import java.awt.Dimension;
-// import java.awt.GridLayout;
 import java.awt.event.*;
-// import java.awt.event.ActionListener;
 
 public class Board extends JPanel {
     private static final int BOARD_SIZE = 8;
     private Tile[][] board = new Tile[BOARD_SIZE][BOARD_SIZE];
-    Board(){
+    public Board(){
         this.setLayout(new GridLayout(BOARD_SIZE, BOARD_SIZE));
         initializeBoard();
     }
