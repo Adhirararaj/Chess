@@ -2,7 +2,7 @@ package Board;
 import Pieces.Piece;
 
 public class Tile {
-    Piece piece;
+    Piece piece = null;
     private int x;
     private int y;
 

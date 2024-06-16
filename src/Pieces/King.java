@@ -3,10 +3,10 @@ package Pieces;
 import Board.Board;
 import Board.Tile;
 
-public class king extends Piece { 
+public class King extends Piece { 
  
 
-	public king(boolean white) 
+	public King(boolean white) 
 	{ 
 		super(white); 
 	} 
@@ -20,9 +20,9 @@ public class king extends Piece {
 			return false; 
 		} 
 
-		int x = Math.abs(start.getX() - end.getX()); 
-		int y = Math.abs(start.getY() - end.getY()); 
-		if (x + y == 1 || x + y == 2 ) { 
+		int x = Math.abs(start.getX() - end.getX());
+		int y = Math.abs(start.getY() - end.getY());
+		if (x + y == 1 || (x == 1 && y == 1)) { 
 			// check if this move will not result in the king 
 			// being attacked if so return true 
 			return true; 

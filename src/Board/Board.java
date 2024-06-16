@@ -13,6 +13,11 @@ public class Board extends JPanel {
         initializeBoard();
     }
 
+    public Tile getTile(int x, int y){
+        if(x<0 || x>=BOARD_SIZE || y<0 || y>=BOARD_SIZE) return null;
+        return this.board[x][y];
+    }
+
     private void initializeBoard() {
         for(int i = 0; i<BOARD_SIZE; i++){
             for(int j = 0; j<BOARD_SIZE; j++){
