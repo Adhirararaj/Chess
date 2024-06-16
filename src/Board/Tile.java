@@ -18,4 +18,7 @@ public class Tile {
     public int getY(){
         return this.y;
     }
+    public Piece getPiece(){
+        return this.piece;
+    }
 }
