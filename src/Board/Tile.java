@@ -2,13 +2,17 @@ package Board;
 import Pieces.Piece;
 
 public class Tile {
-    Piece piece = null;
+    private Piece piece = null;
     private int x;
     private int y;
 
     public Tile(int x, int y){
         this.x = x;
         this.y = y;
+    }
+
+    public void setPiece(Piece piece){
+        this.piece = piece;
     }
 
     public int getX(){

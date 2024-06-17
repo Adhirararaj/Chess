@@ -12,7 +12,7 @@ public class main {
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridBagLayout());
-        frame.getContentPane().setBackground(new Color(204, 153, 102));
+        frame.getContentPane().setBackground(new Color(47, 79, 79));
         frame.setVisible(true);
     }
 }
