@@ -1,4 +1,6 @@
 package Pieces;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 import Board.Board;
 import Board.Tile;
@@ -9,6 +11,8 @@ public class King extends Piece {
 	public King(boolean white) 
 	{ 
 		super(white); 
+		int y = white?0:this.ImageWidth;
+		this.image = new ImageIcon(ImageSheet.getSubimage(0*ImageWidth, y, ImageWidth, ImageWidth).getScaledInstance(80, 80, Image.SCALE_SMOOTH));
 	} 
 
 	@Override
@@ -25,7 +29,10 @@ public class King extends Piece {
 		if (x + y == 1 || (x == 1 && y == 1)) { 
 			// check if this move will not result in the king 
 			// being attacked if so return true 
-			return true; 
+			Functions functions = new Functions();
+			boolean opponentColor = !isWhite();
+			if(functions.isTileSafe(board, opponentColor, end))
+				return true; 
 		} 
         return false;
 		 

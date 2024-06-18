@@ -10,7 +10,7 @@ public class Bishop extends Piece{
     public Bishop(boolean white){
         super(white);
         int y = white? 0:this.ImageWidth;
-        this.image = new ImageIcon(ImageSheet.getSubimage(3*ImageWidth, y, ImageWidth, ImageWidth).getScaledInstance(80, 80, Image.SCALE_SMOOTH));
+        this.image = new ImageIcon(ImageSheet.getSubimage(2*ImageWidth, y, ImageWidth, ImageWidth).getScaledInstance(80, 80, Image.SCALE_SMOOTH));
     }
 
     @Override

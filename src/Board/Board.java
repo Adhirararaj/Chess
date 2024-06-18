@@ -5,7 +5,9 @@ import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.*;
 
+import Pieces.King;
 import Pieces.Bishop;
+
 
 public class Board extends JPanel {
     private static final int BOARD_SIZE = 8;
@@ -78,7 +80,7 @@ public class Board extends JPanel {
                 tile.setPiece(null);
             }
             else{
-                tile.setPiece(new Bishop(true));
+                tile.setPiece(new King(false));
             }
             updateBoard();
         }
