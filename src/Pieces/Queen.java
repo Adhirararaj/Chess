@@ -1,11 +1,16 @@
 package Pieces;
 
+import javax.swing.ImageIcon;
+import java.awt.*;
+
 import Board.*;
 
 public class Queen extends Piece{
 
     public Queen(boolean white){
         super(white);
+        int y = white? 0:this.ImageWidth;
+        this.image = new ImageIcon(ImageSheet.getSubimage(1*ImageWidth, y, ImageWidth, ImageWidth).getScaledInstance(80, 80, Image.SCALE_SMOOTH));
     }
 
     @Override

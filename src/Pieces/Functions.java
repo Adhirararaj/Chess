@@ -35,13 +35,13 @@ public class Functions {
         if(opponentColor){
             if(x-1>=0 && y+1<8){
                 Piece rightNext = board.getTile(x-1, y+1).getPiece();
-                if(rightNext != null && rightNext.isWhite() && rightNext instanceof King){
+                if(rightNext != null && rightNext.isWhite() && rightNext instanceof Pawn){
                     return true;
                 }
             }
             if(x-1>=0 && y-1>=0){
                 Piece leftNext = board.getTile(x-1, y-1).getPiece();
-                if(leftNext != null && leftNext.isWhite() && leftNext instanceof King){
+                if(leftNext != null && leftNext.isWhite() && leftNext instanceof Pawn){
                     return true;
                 }
             }
@@ -49,13 +49,13 @@ public class Functions {
         else{
             if(x+1<8 && y+1<8){
                 Piece rightNext = board.getTile(x+1, y+1).getPiece();
-                if(rightNext != null && !rightNext.isWhite() && rightNext instanceof King){
+                if(rightNext != null && !rightNext.isWhite() && rightNext instanceof Pawn){
                     return true;
                 }
             }
             if(x+1<8 && y-1>=0){
                 Piece leftNext = board.getTile(x+1, y-1).getPiece();
-                if(leftNext != null && !leftNext.isWhite() && leftNext instanceof King){
+                if(leftNext != null && !leftNext.isWhite() && leftNext instanceof Pawn){
                     return true;
                 }
             }
@@ -76,7 +76,7 @@ public class Functions {
                 int newY = y+j;
                 if(newX>=0 && newX<8 && newY>=0 && newY<8){
                     Piece p = board.getTile(newX, newY).getPiece();
-                    if(p!= null && p.isWhite() == opponentColor && p instanceof King){
+                    if(p!= null && p.isWhite() == opponentColor && p instanceof Knight){
                         return true;
                     }
                 }
@@ -88,7 +88,7 @@ public class Functions {
                 int newY = y+j;
                 if(newX>=0 && newX<8 && newY>=0 && newY<8){
                     Piece p = board.getTile(newX, newY).getPiece();
-                    if(p!= null && p.isWhite() == opponentColor && p instanceof King){
+                    if(p!= null && p.isWhite() == opponentColor && p instanceof Knight){
                         return true;
                     }
                 }
@@ -108,10 +108,10 @@ public class Functions {
             if(p != null && p.isWhite() != opponentColor){
                 break;
             }
-            else if(p != null && !(p instanceof King || p instanceof King)){
+            else if(p != null && !(p instanceof Queen || p instanceof Bishop)){
                 break;
             }
-            else if(p != null && (p instanceof King || p instanceof King)){
+            else if(p != null && (p instanceof Queen || p instanceof Bishop)){
                 return true;
             }
             newX++;
@@ -124,10 +124,10 @@ public class Functions {
             if(p != null && p.isWhite() != opponentColor){
                 break;
             }
-            else if(p != null && !(p instanceof King || p instanceof King)){
+            else if(p != null && !(p instanceof Queen || p instanceof Bishop)){
                 break;
             }
-            else if(p != null && (p instanceof King || p instanceof King)){
+            else if(p != null && (p instanceof Queen || p instanceof Bishop)){
                 return true;
             }
             newX++;
@@ -140,10 +140,10 @@ public class Functions {
             if(p != null && p.isWhite() != opponentColor){
                 break;
             }
-            else if(p != null && !(p instanceof King || p instanceof King)){
+            else if(p != null && !(p instanceof Queen || p instanceof Bishop)){
                 break;
             }
-            else if(p != null && (p instanceof King || p instanceof King)){
+            else if(p != null && (p instanceof Queen || p instanceof Bishop)){
                 return true;
             }
             newX--;
@@ -156,10 +156,10 @@ public class Functions {
             if(p != null && p.isWhite() != opponentColor){
                 break;
             }
-            else if(p != null && !(p instanceof King || p instanceof King)){
+            else if(p != null && !(p instanceof Queen || p instanceof Bishop)){
                 break;
             }
-            else if(p != null && (p instanceof King || p instanceof King)){
+            else if(p != null && (p instanceof Queen || p instanceof Bishop)){
                 return true;
             }
             newX--;
@@ -178,10 +178,10 @@ public class Functions {
             if(p != null && p.isWhite() != opponentColor){
                 break;
             }
-            else if(p != null && !(p instanceof King || p instanceof King)){
+            else if(p != null && !(p instanceof Queen || p instanceof Rook)){
                 break;
             }
-            else if(p != null && (p instanceof King || p instanceof King)){
+            else if(p != null && (p instanceof Queen || p instanceof Rook)){
                 return true;
             }
         }
@@ -190,10 +190,10 @@ public class Functions {
             if(p != null && p.isWhite() != opponentColor){
                 break;
             }
-            else if(p != null && !(p instanceof King || p instanceof King)){
+            else if(p != null && !(p instanceof Queen || p instanceof Rook)){
                 break;
             }
-            else if(p != null && (p instanceof King || p instanceof King)){
+            else if(p != null && (p instanceof Queen || p instanceof Rook)){
                 return true;
             }
         }
@@ -202,10 +202,10 @@ public class Functions {
             if(p != null && p.isWhite() != opponentColor){
                 break;
             }
-            else if(p != null && !(p instanceof King || p instanceof King)){
+            else if(p != null && !(p instanceof Queen || p instanceof Rook)){
                 break;
             }
-            else if(p != null && (p instanceof King || p instanceof King)){
+            else if(p != null && (p instanceof Queen || p instanceof Rook)){
                 return true;
             }
         }
@@ -214,10 +214,10 @@ public class Functions {
             if(p != null && p.isWhite() != opponentColor){
                 break;
             }
-            else if(p != null && !(p instanceof King || p instanceof King)){
+            else if(p != null && !(p instanceof Queen || p instanceof Rook)){
                 break;
             }
-            else if(p != null && (p instanceof King || p instanceof King)){
+            else if(p != null && (p instanceof Queen || p instanceof Rook)){
                 return true;
             }
         }

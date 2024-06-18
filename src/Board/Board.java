@@ -5,8 +5,7 @@ import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.*;
 
-import Pieces.King;
-import Pieces.Bishop;
+import Pieces.*;
 
 
 public class Board extends JPanel {

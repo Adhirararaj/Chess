@@ -1,5 +1,8 @@
 package Pieces;
 
+import javax.swing.ImageIcon;
+import java.awt.*;
+
 import Board.Board;
 import Board.Tile;
 
@@ -7,6 +10,8 @@ public class Rook extends Piece {
 
     public Rook(boolean white){
         super(white);
+        int y = white? 0:this.ImageWidth;
+        this.image = new ImageIcon(ImageSheet.getSubimage(4*ImageWidth, y, ImageWidth, ImageWidth).getScaledInstance(80, 80, Image.SCALE_SMOOTH));
     }
 
     @Override
