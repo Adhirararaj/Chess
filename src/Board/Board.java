@@ -46,6 +46,30 @@ public class Board extends JPanel {
                 buttons[i][j] = button;
             }
         }
+        board[0][0].setPiece(new Rook(false));
+        board[0][1].setPiece(new Knight(false));
+        board[0][2].setPiece(new Bishop(false));
+        board[0][3].setPiece(new Queen(false));
+        board[0][4].setPiece(new King(false));
+        board[0][5].setPiece(new Bishop(false));
+        board[0][6].setPiece(new Knight(false));
+        board[0][7].setPiece(new Rook(false));
+
+        board[7][0].setPiece(new Rook(true));
+        board[7][1].setPiece(new Knight(true));
+        board[7][2].setPiece(new Bishop(true));
+        board[7][3].setPiece(new Queen(true));
+        board[7][4].setPiece(new King(true));
+        board[7][5].setPiece(new Bishop(true));
+        board[7][6].setPiece(new Knight(true));
+        board[7][7].setPiece(new Rook(true));
+
+        for(int i = 0; i<BOARD_SIZE; i++){
+            board[1][i].setPiece(new Pawn(false));
+            board[6][i].setPiece(new Pawn(true));
+        }
+
+        updateBoard();
     }
 
     public JButton getButton(int x, int y){
