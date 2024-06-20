@@ -5,11 +5,11 @@ import Pieces.Piece;
 import Players.Player;
 
 public class Move {
-    private final Player player;
-    private final Tile startTile;
-    private final Tile endTile;
-    private final Piece pieceMoved;
-    private final Piece pieceKilled;
+    protected Player player;
+    protected Tile startTile;
+    protected Tile endTile;
+    protected Piece pieceMoved;
+    protected Piece pieceKilled;
 
     public Move(Player player, Tile startTile, Tile endTile) {
         this.player = player;
@@ -17,6 +17,26 @@ public class Move {
         this.endTile = endTile;
         this.pieceMoved = startTile.getPiece();
         this.pieceKilled = null;
+    }
+
+    public Tile getStart(){
+        return this.startTile;
+    }
+
+    public Tile getEnd(){
+        return this.endTile;
+    }
+
+    public Player getPlayer(){
+        return this.player;
+    }
+
+    public Piece getPieceMoved(){
+        return this.pieceMoved;
+    }
+
+    public Piece getPieceKilled(){
+        return this.pieceKilled;
     }
 
     @Override
