@@ -100,13 +100,9 @@ public class Board extends JPanel {
     }
 
     public void handleGameOver(boolean whiteWins) {
-        // Implement logic to handle game over state in GUI
-        // For example, disable all buttons or display a message
         String message = whiteWins ? "White wins!" : "Black wins!";
         JOptionPane.showMessageDialog(this, message, "Game Over", JOptionPane.INFORMATION_MESSAGE);
     }
-    
-
 
     private class TileButtonListener implements ActionListener{
         private Tile tile;
