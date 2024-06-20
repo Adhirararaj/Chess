@@ -9,14 +9,16 @@ import Board.Board;
 import Board.Tile;
 
 public abstract class Piece{
-    private boolean Alive = true;
-    private boolean White = true;
+    private boolean Alive;
+    private boolean White;
     protected BufferedImage ImageSheet;
     protected int ImageWidth;
-    public ImageIcon image = null;
+    public ImageIcon image;
 
     public Piece(boolean White){
+        this.Alive = true;
         this.White = White;
+        this.image = null;
         loadImages();
     }
 

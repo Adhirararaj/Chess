@@ -39,6 +39,14 @@ public class Move {
         return this.pieceKilled;
     }
 
+    public void setPieceMoved(Piece piece){
+        this.pieceMoved = piece;
+    }
+
+    public void setPieceKilled(Piece piece){
+        this.pieceKilled = piece;
+    }
+
     @Override
     public String toString() {
         return "Move{" +

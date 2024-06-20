@@ -47,6 +47,7 @@ public class Queen extends Piece{
                     Piece rightNext = board.getTile(i, y).getPiece();
                     if(rightNext != null) return false;
                 }
+                return true;
             }
             if(Math.abs(newX-x) != Math.abs(newY-y)) return false;
             if(newY>y){
@@ -68,6 +69,7 @@ public class Queen extends Piece{
                     Piece rightNext = board.getTile(i, y).getPiece();
                     if(rightNext != null) return false;
                 }
+                return true;
             }
             if(Math.abs(newX-x) != Math.abs(newY-y)) return false;
             if(newY>y){

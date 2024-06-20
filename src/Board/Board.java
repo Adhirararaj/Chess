@@ -6,13 +6,20 @@ import java.awt.*;
 import java.awt.event.*;
 
 import Pieces.*;
+import GameLogic.*;
 
 
 public class Board extends JPanel {
     private static final int BOARD_SIZE = 8;
     private Tile[][] board = new Tile[BOARD_SIZE][BOARD_SIZE];
     private JButton[][] buttons = new JButton[BOARD_SIZE][BOARD_SIZE];
-    public Board(){
+    private Tile startTile;
+    private Tile endTile;
+    private Game game;
+    public Board(Game game){
+        startTile = null;
+        endTile = null;
+        this.game = game;
         this.setLayout(new GridLayout(BOARD_SIZE, BOARD_SIZE));
         initializeBoard();
     }
@@ -99,13 +106,20 @@ public class Board extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(tile.getPiece() instanceof Bishop){
-                tile.setPiece(null);
+            if (startTile == null) {
+                startTile = tile;
+                System.out.println("Start Tile selected: (" + (startTile.getX() + 1) + ", " + (startTile.getY() + 1) + ")");
+            } else {
+                endTile = tile;
+                System.out.println("End Tile selected: (" + (endTile.getX() + 1) + ", " + (endTile.getY() + 1) + ")");
+                if (game.playerMove(startTile, endTile)) {
+                    updateBoard();
+                } else {
+                    System.out.println("Invalid move!");
+                }
+                startTile = null;
+                endTile = null;
             }
-            else{
-                tile.setPiece(new King(false));
-            }
-            updateBoard();
         }
 
         
