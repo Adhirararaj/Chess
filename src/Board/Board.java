@@ -1,6 +1,7 @@
 package Board;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.*;
@@ -29,7 +30,8 @@ public class Board extends JPanel {
         return this.board[x][y];
     }
 
-    private void initializeBoard() {
+    public void initializeBoard() {
+
         for(int i = 0; i<BOARD_SIZE; i++){
             for(int j = 0; j<BOARD_SIZE; j++){
                 if(board[i][j] == null){
@@ -96,6 +98,15 @@ public class Board extends JPanel {
             }
         }
     }
+
+    public void handleGameOver(boolean whiteWins) {
+        // Implement logic to handle game over state in GUI
+        // For example, disable all buttons or display a message
+        String message = whiteWins ? "White wins!" : "Black wins!";
+        JOptionPane.showMessageDialog(this, message, "Game Over", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+
 
     private class TileButtonListener implements ActionListener{
         private Tile tile;
