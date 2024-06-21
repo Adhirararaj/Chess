@@ -77,8 +77,7 @@ public class Game {
             for(int j = 0; j<8; j++){
                 Piece p = board.getTile(i, j).getPiece();
                 if(p != null && p instanceof King && p.isWhite() == currentTurn.isWhiteSide()){
-                    Functions functions = new Functions();
-                    if(functions.isTileSafe(board, !p.isWhite(), board.getTile(i, j))){
+                    if(Functions.isTileSafe(board, !p.isWhite(), board.getTile(i, j))){
                         movesPlayed.add(move);
                     }
                     else{

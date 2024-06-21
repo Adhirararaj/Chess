@@ -4,7 +4,7 @@ import Board.Board;
 import Board.Tile;
 
 public class Functions {
-    public boolean isTileSafe(Board board, boolean opponentColor, Tile tile) {
+    public static boolean isTileSafe(Board board, boolean opponentColor, Tile tile) {
         if (isUnderPawnAttack(board, opponentColor, tile)) {
             return false;
         }
@@ -28,7 +28,7 @@ public class Functions {
         return true;
     }
 
-    private boolean isUnderPawnAttack(Board board, boolean opponentColor, Tile tile){
+    private static boolean isUnderPawnAttack(Board board, boolean opponentColor, Tile tile){
         int x = tile.getX();
         int y = tile.getY();
 
@@ -64,7 +64,7 @@ public class Functions {
         return false;
     }
 
-    private boolean isUnderKnightAttack(Board board, boolean opponentColor, Tile tile){
+    private static boolean isUnderKnightAttack(Board board, boolean opponentColor, Tile tile){
         int x = tile.getX();
         int y = tile.getY();
         int[] dir1 = {2, -2};
@@ -98,7 +98,7 @@ public class Functions {
         return false;
     }
 
-    private boolean isUnderDiagonalAttack(Board board, boolean opponentColor, Tile tile){
+    private static boolean isUnderDiagonalAttack(Board board, boolean opponentColor, Tile tile){
         int x = tile.getX();
         int y = tile.getY();
 
@@ -169,7 +169,7 @@ public class Functions {
         return false;
     }
 
-    private boolean isUnderStraightAttack(Board board, boolean opponentColor, Tile tile){
+    private static boolean isUnderStraightAttack(Board board, boolean opponentColor, Tile tile){
         int x = tile.getX();
         int y = tile.getY();
 
@@ -225,7 +225,7 @@ public class Functions {
         return false;
     }
 
-    private boolean isUnderKingAttack(Board board, boolean opponentColor, Tile tile){
+    private static boolean isUnderKingAttack(Board board, boolean opponentColor, Tile tile){
         int x = tile.getX();
         int y = tile.getY();
         int[] dir = {0, -1, +1};
