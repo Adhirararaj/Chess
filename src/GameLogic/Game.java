@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 import Board.*;
 import Pieces.*;
 import Players.*;
+import ChessAI.*;
+import ChessAI.Functions;
 
 public class Game {
     private Player[] players = new Player[2];
@@ -77,7 +79,7 @@ public class Game {
             for(int j = 0; j<8; j++){
                 Piece p = board.getTile(i, j).getPiece();
                 if(p != null && p instanceof King && p.isWhite() == currentTurn.isWhiteSide()){
-                    if(Functions.isTileSafe(board, !p.isWhite(), board.getTile(i, j))){
+                    if(Pieces.Functions.isTileSafe(board, !p.isWhite(), board.getTile(i, j))){
                         movesPlayed.add(move);
                     }
                     else{
@@ -100,6 +102,7 @@ public class Game {
         }
         
         currentTurn = (currentTurn == players[0]) ? players[1] : players[0];
+        System.out.println(ChessAI.Functions.evaluateBoard(board));
         
         return true; 
     }
