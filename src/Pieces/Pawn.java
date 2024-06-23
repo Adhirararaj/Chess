@@ -13,7 +13,7 @@ public class Pawn extends Piece {
         int y = white? 0:this.ImageWidth;
         this.image = new ImageIcon(ImageSheet.getSubimage(5*ImageWidth, y, ImageWidth, ImageWidth).getScaledInstance(80, 80, Image.SCALE_SMOOTH));
     }
-    boolean moved = false;
+    public boolean moved = false;
 
     private void setMoved(){
         moved = true;
@@ -56,4 +56,5 @@ public class Pawn extends Piece {
         }
         return false;
     }
+    
 }
