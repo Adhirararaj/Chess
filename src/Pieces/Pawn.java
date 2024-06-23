@@ -15,9 +15,10 @@ public class Pawn extends Piece {
     }
     boolean moved = false;
 
-    private void setMoved(){
-        moved = true;
+    public void setMoved(boolean moved){
+        this.moved = moved;
     }
+    
     @Override 
     public boolean isValidMove(Board board, Tile start, Tile end){
         if( end.getPiece()!= null && end.getPiece().isWhite()== this.isWhite()){
@@ -30,28 +31,41 @@ public class Pawn extends Piece {
 
         if(this.isWhite()){
             if(!moved){
-                setMoved();
-                return (x - newX == 2 || x - newX ==1);
+                setMoved(true);
+                if((x - newX == 2 || x - newX ==1) && y == newY){
+                    return true;
+                }
             }
             else if(moved){
-                return (x - newX == 1);
+                if(x - newX == 1 && y == newY){
+                    return true;
+                }
             }
 
             if(end.getPiece() != null && end.getPiece().isWhite()!= this.isWhite()){
-                return ((x - newX) == 1 && Math.abs(y - newY) == 1);
+                if((x - newX) == 1 && Math.abs(y - newY) == 1){
+                    return true;
+                }
             }
 
-        }else{
+        }
+        else{
             if(!moved){
-                setMoved();
-                return (newX - x == 2 || newX - x ==1);
+                setMoved(true);
+                if((newX - x == 2 || newX - x ==1) && y == newY){
+                    return true;
+                }
             }
             else if(moved){
-                return (newX - x == 1);
+                if(newX - x == 1 && y == newY){
+                    return true;
+                }
             }
 
             if(end.getPiece() != null && end.getPiece().isWhite()!= this.isWhite()){
-                return ((x - newX) == -1 && Math.abs(y - newY) == 1);
+                if((x - newX) == -1 && Math.abs(y - newY) == 1){
+                    return true;
+                }
             }
         }
         return false;

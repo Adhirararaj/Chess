@@ -16,7 +16,7 @@ public class Board extends JPanel {
     private JButton[][] buttons = new JButton[BOARD_SIZE][BOARD_SIZE];
     private Tile startTile;
     private Tile endTile;
-    private Game game;
+    public Game game;
     public Board(Game game){
         startTile = null;
         endTile = null;
