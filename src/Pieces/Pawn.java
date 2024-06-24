@@ -31,13 +31,13 @@ public class Pawn extends Piece {
 
         if(this.isWhite()){
             if(!moved){
-                setMoved(true);
-                if((x - newX == 2 || x - newX ==1) && y == newY){
+                if((x - newX == 2 || x - newX ==1) && y == newY && end.getPiece() == null){
+                    setMoved(true);
                     return true;
                 }
             }
             else if(moved){
-                if(x - newX == 1 && y == newY){
+                if(x - newX == 1 && y == newY && end.getPiece() == null){
                     return true;
                 }
             }
@@ -51,13 +51,13 @@ public class Pawn extends Piece {
         }
         else{
             if(!moved){
-                setMoved(true);
-                if((newX - x == 2 || newX - x ==1) && y == newY){
+                if((newX - x == 2 || newX - x ==1) && y == newY && end.getPiece() == null){
+                    setMoved(true);
                     return true;
                 }
             }
             else if(moved){
-                if(newX - x == 1 && y == newY){
+                if(newX - x == 1 && y == newY && end.getPiece() == null){
                     return true;
                 }
             }
