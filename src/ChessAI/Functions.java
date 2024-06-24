@@ -65,7 +65,8 @@ public class Functions {
         return 0;
     }
 
-    public static ArrayList<Move> getAllPossibleMoves(Board board, Player player){
+    public static ArrayList<Move> getAllPossibleMoves(Board board, boolean isWhite){
+        Player player = isWhite? board.game.players[0] : board.game.players[1];
         ArrayList<Move> allMoves = new ArrayList<>();
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){

@@ -11,7 +11,7 @@ public class BestMove {
         int bestValue = Integer.MAX_VALUE;
         Move bestMove = null;
 
-        for(Move move : board.getAllPossibleMoves(false)){
+        for(Move move : Functions.getAllPossibleMoves(board, false)){
             if(board.game.makeMove(move, false)){
                 int boardValue = minimax(board, Game.depth - 1, Integer.MIN_VALUE, Integer.MAX_VALUE, true);
                 board.game.undoMove();
@@ -31,7 +31,7 @@ public class BestMove {
 
         if(isWhiteTurn){
             int maxEval = Integer.MIN_VALUE;
-            for(Move move : board.getAllPossibleMoves(true)){
+            for(Move move : Functions.getAllPossibleMoves(board, true)){
                 board.game.makeMove(move, true);
                 int eval = minimax(board, depth - 1, alpha, beta, false);
                 board.game.undoMove();
@@ -45,7 +45,7 @@ public class BestMove {
         }
         else{
             int minEval = Integer.MAX_VALUE;
-            for(Move move : board.getAllPossibleMoves(false)){
+            for(Move move : Functions.getAllPossibleMoves(board, false)){
                 board.game.makeMove(move, false);
                 int eval = minimax(board, depth - 1, alpha, beta, true);
                 board.game.undoMove();
