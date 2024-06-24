@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import Pieces.*;
+import Players.ComputerPlayer;
 import GameLogic.*;
 
 
@@ -44,10 +45,10 @@ public class Board extends JPanel {
                     button.setIcon(board[i][j].getPiece().image);
                 }
                 if((i+j)%2 == 0){
-                    button.setBackground(new Color(70, 130, 180));
+                    button.setBackground(new Color(240, 217, 181));
                 }
                 else{
-                    button.setBackground(new Color(245, 245, 220));
+                    button.setBackground(new Color(181, 136, 99));
                 }
 
                 button.addActionListener(new TileButtonListener(board[i][j]));
@@ -112,11 +113,14 @@ public class Board extends JPanel {
         }
 
         @Override
-        public void actionPerformed(ActionEvent e) {
-            if (startTile == null) {
+        public void actionPerformed(ActionEvent e){
+            if(game.players[1] instanceof ComputerPlayer && !game.currentTurn) return;
+            if(startTile == null && tile.getPiece() == null) return;
+            if (startTile == null){
                 startTile = tile;
                 System.out.println("Start Tile selected: (" + (startTile.getX() + 1) + ", " + (startTile.getY() + 1) + ")");
-            } else {
+            }
+            else{
                 endTile = tile;
                 System.out.println("End Tile selected: (" + (endTile.getX() + 1) + ", " + (endTile.getY() + 1) + ")");
                 if (game.playerMove(startTile, endTile)) {

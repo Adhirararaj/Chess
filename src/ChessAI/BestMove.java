@@ -3,16 +3,17 @@ package ChessAI;
 import java.util.List;
 
 import Board.Board;
+import GameLogic.Game;
 import GameLogic.Move;
 
 public class BestMove {
-    public static Move findBestMove(Board board) {
+    public static Move findBestMove(Board board){
         int bestValue = Integer.MAX_VALUE;
         Move bestMove = null;
 
         for(Move move : board.getAllPossibleMoves(false)){
             if(board.game.makeMove(move, false)){
-                int boardValue = minimax(board, MAX_DEPTH - 1, Integer.MIN_VALUE, Integer.MAX_VALUE, true);
+                int boardValue = minimax(board, Game.depth - 1, Integer.MIN_VALUE, Integer.MAX_VALUE, true);
                 board.game.undoMove();
                 if (boardValue < bestValue) {
                     bestValue = boardValue;

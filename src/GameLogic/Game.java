@@ -11,17 +11,19 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import Board.*;
 import Pieces.*;
 import Players.*;
-import ChessAI.*;
+// import ChessAI.*;
 
 public class Game {
-    private Player[] players = new Player[2];
+    public Player[] players = new Player[2];
     private Board board;
     public boolean currentTurn;
     private List<Move> movesPlayed;
+    public static int depth;
     public enum GameStatus{ 
         ACTIVE, 
         BLACK_WIN, 
@@ -44,10 +46,10 @@ public class Game {
         return this.gameStatus;
     }
 
-    public Game(){
+    public Game(Player p1, Player p2){
         movesPlayed = new ArrayList<Move>();
-        players[0] = new HumanPlayer(true);
-        players[1] = new HumanPlayer(false);
+        players[0] = p1;
+        players[1] = p2;
         gameStatus = GameStatus.ACTIVE;
         board = new Board(this);
         currentTurn = true;
@@ -57,7 +59,7 @@ public class Game {
         frame.setLayout(new GridBagLayout());
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setBackground(new Color(47, 79, 79));
+        frame.getContentPane().setBackground(new Color(85, 60, 42));
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
@@ -66,6 +68,7 @@ public class Game {
         frame.add(board, gbc);
 
         JButton undoButton = new JButton("Undo");
+        undoButton.setFocusable(false);
         undoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -81,6 +84,7 @@ public class Game {
     }
 
     public boolean playerMove(Tile start, Tile end){
+        if(!currentTurn && players[1] instanceof ComputerPlayer) return false;
         Player player = (currentTurn)? players[0] : players[1];
         Move move = new Move(player, start, end);
         boolean result = this.makeMove(move, currentTurn);
@@ -121,6 +125,42 @@ public class Game {
                         return false;
                     }
                 }
+            }
+        }
+
+        if(sourcePiece instanceof Pawn){
+            if((sourcePiece.isWhite() && move.getEnd().getX() == 0) || (!sourcePiece.isWhite() && move.getEnd().getX() == 7)){
+                Piece newPiece = null;
+                if(players[1] instanceof ComputerPlayer && !currentTurn){
+                    newPiece = new Queen(false);
+                }
+                else{
+                    String[] options = { "Queen", "Rook", "Bishop", "Knight" };
+                    int choice = JOptionPane.showOptionDialog(null,
+                            "Select a piece to promote your pawn to:", "Pawn Promotion",
+                            JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null,
+                            options, options[0]);
+
+                    switch (choice) {
+                        case 0:
+                            newPiece = new Queen(sourcePiece.isWhite());
+                            break;
+                        case 1:
+                            newPiece = new Rook(sourcePiece.isWhite());
+                            break;
+                        case 2:
+                            newPiece = new Bishop(sourcePiece.isWhite());
+                            break;
+                        case 3:
+                            newPiece = new Knight(sourcePiece.isWhite());
+                            break;
+                        default:
+                            newPiece = new Queen(sourcePiece.isWhite());
+                            break;
+                    }
+                }
+                
+                move.getEnd().setPiece(newPiece);
             }
         }
         

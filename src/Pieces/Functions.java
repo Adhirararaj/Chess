@@ -32,16 +32,16 @@ public class Functions {
         int x = tile.getX();
         int y = tile.getY();
 
-        if(opponentColor){
+        if(!opponentColor){
             if(x-1>=0 && y+1<8){
                 Piece rightNext = board.getTile(x-1, y+1).getPiece();
-                if(rightNext != null && rightNext.isWhite() && rightNext instanceof Pawn){
+                if(rightNext != null && !rightNext.isWhite() && rightNext instanceof Pawn){
                     return true;
                 }
             }
             if(x-1>=0 && y-1>=0){
                 Piece leftNext = board.getTile(x-1, y-1).getPiece();
-                if(leftNext != null && leftNext.isWhite() && leftNext instanceof Pawn){
+                if(leftNext != null && !leftNext.isWhite() && leftNext instanceof Pawn){
                     return true;
                 }
             }
@@ -49,13 +49,13 @@ public class Functions {
         else{
             if(x+1<8 && y+1<8){
                 Piece rightNext = board.getTile(x+1, y+1).getPiece();
-                if(rightNext != null && !rightNext.isWhite() && rightNext instanceof Pawn){
+                if(rightNext != null && rightNext.isWhite() && rightNext instanceof Pawn){
                     return true;
                 }
             }
             if(x+1<8 && y-1>=0){
                 Piece leftNext = board.getTile(x+1, y-1).getPiece();
-                if(leftNext != null && !leftNext.isWhite() && leftNext instanceof Pawn){
+                if(leftNext != null && leftNext.isWhite() && leftNext instanceof Pawn){
                     return true;
                 }
             }

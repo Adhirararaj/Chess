@@ -2,7 +2,7 @@ package Players;
 
 public class ComputerPlayer extends Player {
      
-    ComputerPlayer(boolean WhiteSide){
+    public ComputerPlayer(boolean WhiteSide){
         this.WhiteSide = WhiteSide;
         this.HumanPlayer = false;
     }
