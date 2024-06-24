@@ -100,7 +100,7 @@ public class Board extends JPanel {
         }
     }
 
-    public void handleGameOver(boolean whiteWins) {
+    public void handleGameOver(boolean whiteWins){
         String message = whiteWins ? "White wins!" : "Black wins!";
         JOptionPane.showMessageDialog(this, message, "Game Over", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -118,21 +118,65 @@ public class Board extends JPanel {
             if(startTile == null && tile.getPiece() == null) return;
             if (startTile == null){
                 startTile = tile;
-                System.out.println("Start Tile selected: (" + (startTile.getX() + 1) + ", " + (startTile.getY() + 1) + ")");
+                // System.out.println("Start Tile selected: (" + (startTile.getX() + 1) + ", " + (startTile.getY() + 1) + ")");
             }
             else{
                 endTile = tile;
-                System.out.println("End Tile selected: (" + (endTile.getX() + 1) + ", " + (endTile.getY() + 1) + ")");
-                if (game.playerMove(startTile, endTile)) {
-                    updateBoard();
-                } else {
+                // System.out.println("End Tile selected: (" + (endTile.getX() + 1) + ", " + (endTile.getY() + 1) + ")");
+                // Piece piece = tile.getPiece();
+                if(game.playerMove(startTile, endTile)){
+                    if(isGameOver()){
+                        handleGameOver(!game.currentTurn);
+                    }
+                    if(game.players[1] instanceof ComputerPlayer && !game.currentTurn){
+                        Move bestMove = ChessAI.BestMove.findBestMove(Board.this);
+                        System.out.println(bestMove.getStart().getX() + " " + bestMove.getStart().getY());
+                        System.out.println(bestMove.getEnd().getX() + " " + bestMove.getEnd().getY());
+                        if(game.makeMove(bestMove, false)){
+                            System.out.println(bestMove.getStart().getX() + " " + bestMove.getStart().getY());
+                            System.out.println(bestMove.getEnd().getX() + " " + bestMove.getEnd().getY());
+                            System.out.println("moved");
+                        }
+                        updateBoard();
+                    }
+                }
+                else {
                     System.out.println("Invalid move!");
                 }
                 startTile = null;
                 endTile = null;
             }
         }
+    }
 
-        
+    public boolean isGameOver(){
+        for(int i = 0; i<8; i++){
+            for(int j = 0; j<8; j++){
+                Tile tile = board[i][j];
+                if(!tile.isTileEmpty() && tile.getPiece() instanceof King && tile.getPiece().isWhite() == game.currentTurn){
+                    if(Pieces.Functions.isTileSafe(this, !game.currentTurn, tile)){
+                        return false;
+                    }
+                }
+            }
+        }
+        for(Move move: ChessAI.Functions.getAllPossibleMoves(this, game.currentTurn)){
+            if (game.makeMove(move, game.currentTurn)) {
+                for(int i = 0; i<8; i++){
+                    for(int j = 0; j<8; j++){
+                        Tile tile = board[i][j];
+                        if(!tile.isTileEmpty() && tile.getPiece() instanceof King && tile.getPiece().isWhite() == game.currentTurn){
+                            if(Pieces.Functions.isTileSafe(this, !game.currentTurn, tile)){
+                                return false;
+                            }
+                        }
+                    }
+                }
+                game.undoMove();
+            }
+        }
+
+        game.setStatus(!game.currentTurn);
+        return true;
     }
 }

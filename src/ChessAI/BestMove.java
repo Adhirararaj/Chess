@@ -32,13 +32,14 @@ public class BestMove {
         if(isWhiteTurn){
             int maxEval = Integer.MIN_VALUE;
             for(Move move : Functions.getAllPossibleMoves(board, true)){
-                board.game.makeMove(move, true);
-                int eval = minimax(board, depth - 1, alpha, beta, false);
-                board.game.undoMove();
-                maxEval = Math.max(maxEval, eval);
-                alpha = Math.max(alpha, eval);
-                if (beta <= alpha) {
-                    break;
+                if(board.game.makeMove(move, true)){
+                    int eval = minimax(board, depth - 1, alpha, beta, false);
+                    board.game.undoMove();
+                    maxEval = Math.max(maxEval, eval);
+                    alpha = Math.max(alpha, eval);
+                    if (beta <= alpha) {
+                        break;
+                    }
                 }
             }
             return maxEval;
@@ -46,13 +47,14 @@ public class BestMove {
         else{
             int minEval = Integer.MAX_VALUE;
             for(Move move : Functions.getAllPossibleMoves(board, false)){
-                board.game.makeMove(move, false);
-                int eval = minimax(board, depth - 1, alpha, beta, true);
-                board.game.undoMove();
-                minEval = Math.min(minEval, eval);
-                beta = Math.min(beta, eval);
-                if (beta <= alpha) {
-                    break;
+                if(board.game.makeMove(move, false)){
+                    int eval = minimax(board, depth - 1, alpha, beta, true);
+                    board.game.undoMove();
+                    minEval = Math.min(minEval, eval);
+                    beta = Math.min(beta, eval);
+                    if (beta <= alpha) {
+                        break;
+                    }
                 }
             }
             return minEval;

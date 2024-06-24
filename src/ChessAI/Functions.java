@@ -72,8 +72,8 @@ public class Functions {
             for(int j=0;j<8;j++){
                 Tile startTile = board.getTile(i, j);
                 Piece piece = startTile.getPiece();
-                if(piece!= null && piece.getPlayer().equals(player)){
-                    ArrayList<Move> piecemoves = getPossibleMoves(board,startTile);
+                if(piece!= null && piece.isWhite() == isWhite){
+                    ArrayList<Move> piecemoves = getPossibleMoves(board,startTile, player);
                     allMoves.addAll(piecemoves);
                 }
             }
@@ -83,16 +83,14 @@ public class Functions {
 
     
 
-    private static ArrayList<Move> getPossibleMoves(Board board , Tile startTile){
-        
+    private static ArrayList<Move> getPossibleMoves(Board board , Tile startTile, Player player){
         Piece piece = startTile.getPiece();
         ArrayList <Move> moves = new ArrayList<>();
         int x = startTile.getX();
-        int y= startTile.getY();
-        Player player = piece.getPlayer();
-        boolean moved = ((Pawn) piece).moved; 
+        int y= startTile.getY(); 
 
         if(startTile.getPiece() instanceof Pawn){
+            boolean moved = ((Pawn) piece).moved; 
             if(piece.isWhite()){
                 if(x>0 && board.getTile(x-1, y).isTileEmpty()){
                     moves.add(new Move(player, startTile, board.getTile(x-1, y)));
@@ -103,6 +101,10 @@ public class Functions {
                 if (x > 0 && y > 0 && board.getTile(x - 1, y - 1).getPiece() != null &&
                         !board.getTile(x - 1, y - 1).getPiece().isWhite()) {
                     moves.add(new Move(player, startTile, board.getTile(x - 1, y - 1)));
+                }
+                if (x > 0 && y < 7 && board.getTile(x - 1, y + 1).getPiece() != null &&
+                        !board.getTile(x - 1, y + 1).getPiece().isWhite()) {
+                    moves.add(new Move(player, startTile, board.getTile(x - 1, y + 1)));
                 }
             }else{
                 if (x < 7 && board.getTile(x+1, y).isTileEmpty()) {
@@ -117,6 +119,11 @@ public class Functions {
                         board.getTile(x + 1, y - 1).getPiece().isWhite()) {
                     moves.add(new Move(player, startTile, board.getTile(x + 1, y - 1)));
                 }
+
+                if (x < 7 && y < 7 && board.getTile(x + 1, y + 1).getPiece() != null &&
+                        board.getTile(x + 1, y + 1).getPiece().isWhite()) {
+                    moves.add(new Move(player, startTile, board.getTile(x + 1, y + 1)));
+                }
             }
         }
 
@@ -125,7 +132,7 @@ public class Functions {
                 if (board.getTile(i, y).isTileEmpty()) {
                     moves.add(new Move(player, startTile, board.getTile(i, y)));
                 } else {
-                    if (board.getTile(i, y).getPiece().getPlayer() != player) {
+                    if (board.getTile(i, y).getPiece().isWhite() != player.isWhiteSide()) {
                         moves.add(new Move(player, startTile, board.getTile(i, y)));
                     }
                     break;
@@ -136,7 +143,7 @@ public class Functions {
                 if (board.getTile(i, y).isTileEmpty()) {
                     moves.add(new Move(player, startTile, board.getTile(i, y)));
                 } else {
-                    if (board.getTile(i, y).getPiece().getPlayer() != player) {
+                    if (board.getTile(i, y).getPiece().isWhite() != player.isWhiteSide()) {
                         moves.add(new Move(player, startTile, board.getTile(i, y)));
                     }
                     break;
@@ -147,7 +154,7 @@ public class Functions {
                 if (board.getTile(x, i).isTileEmpty()) {
                     moves.add(new Move(player, startTile, board.getTile(x, i)));
                 } else {
-                    if (board.getTile(x, i).getPiece().getPlayer() != player) {
+                    if (board.getTile(x, i).getPiece().isWhite() != player.isWhiteSide()) {
                         moves.add(new Move(player, startTile, board.getTile(x, i)));
                     }
                     break;
@@ -158,7 +165,7 @@ public class Functions {
                 if (board.getTile(x, i).isTileEmpty()) {
                     moves.add(new Move(player, startTile, board.getTile(x, i)));
                 } else {
-                    if (board.getTile(x, i).getPiece().getPlayer() != player) {
+                    if (board.getTile(x, i).getPiece().isWhite() != player.isWhiteSide()) {
                         moves.add(new Move(player, startTile, board.getTile(x, i)));
                     }
                     break;
@@ -167,11 +174,11 @@ public class Functions {
         }
 
         if(startTile.getPiece() instanceof Bishop){
-            for(int i =1 ; x + i< 8; i++){
+            for(int i =1 ; x + i< 8 && y + i< 8; i++){
                 if(board.getTile(x+i,y+i).isTileEmpty()){
                     moves.add(new Move(player, startTile, board.getTile(x+i, y+i)));
                 }else {
-                    if (board.getTile(x + i, y + i).getPiece().getPlayer() != player) {
+                    if (board.getTile(x + i, y + i).getPiece().isWhite() != player.isWhiteSide()) {
                         moves.add(new Move(player, startTile, board.getTile(x + i, y + i)));
                     }
                     break;
@@ -181,7 +188,7 @@ public class Functions {
                 if (board.getTile(x - i, y + i).isTileEmpty()) {
                     moves.add(new Move(player, startTile, board.getTile(x - i, y + i)));
                 } else {
-                    if (board.getTile(x - i, y + i).getPiece().getPlayer() != player) {
+                    if (board.getTile(x - i, y + i).getPiece().isWhite() != player.isWhiteSide()) {
                         moves.add(new Move(player, startTile, board.getTile(x - i, y + i)));
                     }
                     break;
@@ -192,7 +199,7 @@ public class Functions {
                 if (board.getTile(x + i, y - i).isTileEmpty()) {
                     moves.add(new Move(player, startTile, board.getTile(x + i, y - i)));
                 } else {
-                    if (board.getTile(x + i, y - i).getPiece().getPlayer() != player) {
+                    if (board.getTile(x + i, y - i).getPiece().isWhite() != player.isWhiteSide()) {
                         moves.add(new Move(player, startTile, board.getTile(x + i, y - i)));
                     }
                     break;
@@ -203,7 +210,7 @@ public class Functions {
                 if (board.getTile(x - i, y - i).isTileEmpty()) {
                     moves.add(new Move(player, startTile, board.getTile(x - i, y - i)));
                 } else {
-                    if (board.getTile(x - i, y - i).getPiece().getPlayer() != player) {
+                    if (board.getTile(x - i, y - i).getPiece().isWhite() != player.isWhiteSide()) {
                         moves.add(new Move(player, startTile, board.getTile(x - i, y - i)));
                     }
                     break;
@@ -217,7 +224,7 @@ public class Functions {
                 if (board.getTile(i, y).isTileEmpty()) {
                     moves.add(new Move(player, startTile, board.getTile(i, y)));
                 } else {
-                    if (board.getTile(i, y).getPiece().getPlayer() != player) {
+                    if (board.getTile(i, y).getPiece().isWhite() != player.isWhiteSide()) {
                         moves.add(new Move(player, startTile, board.getTile(i, y)));
                     }
                     break;
@@ -228,7 +235,7 @@ public class Functions {
                 if (board.getTile(i, y).isTileEmpty()) {
                     moves.add(new Move(player, startTile, board.getTile(i, y)));
                 } else {
-                    if (board.getTile(i, y).getPiece().getPlayer() != player) {
+                    if (board.getTile(i, y).getPiece().isWhite() != player.isWhiteSide()) {
                         moves.add(new Move(player, startTile, board.getTile(i, y)));
                     }
                     break;
@@ -239,7 +246,7 @@ public class Functions {
                 if (board.getTile(x, i).isTileEmpty()) {
                     moves.add(new Move(player, startTile, board.getTile(x, i)));
                 } else {
-                    if (board.getTile(x, i).getPiece().getPlayer() != player) {
+                    if (board.getTile(x, i).getPiece().isWhite() != player.isWhiteSide()) {
                         moves.add(new Move(player, startTile, board.getTile(x, i)));
                     }
                     break;
@@ -250,18 +257,18 @@ public class Functions {
                 if (board.getTile(x, i).isTileEmpty()) {
                     moves.add(new Move(player, startTile, board.getTile(x, i)));
                 } else {
-                    if (board.getTile(x, i).getPiece().getPlayer() != player) {
+                    if (board.getTile(x, i).getPiece().isWhite() != player.isWhiteSide()) {
                         moves.add(new Move(player, startTile, board.getTile(x, i)));
                     }
                     break;
                 }
             }
 
-            for(int i =1 ; x + i< 8; i++){
+            for(int i =1 ; x + i< 8 && y + i< 8; i++){
                 if(board.getTile(x+i,y+i).isTileEmpty()){
                     moves.add(new Move(player, startTile, board.getTile(x+i, y+i)));
                 }else {
-                    if (board.getTile(x + i, y + i).getPiece().getPlayer() != player) {
+                    if (board.getTile(x + i, y + i).getPiece().isWhite() != player.isWhiteSide()) {
                         moves.add(new Move(player, startTile, board.getTile(x + i, y + i)));
                     }
                     break;
@@ -271,7 +278,7 @@ public class Functions {
                 if (board.getTile(x - i, y + i).isTileEmpty()) {
                     moves.add(new Move(player, startTile, board.getTile(x - i, y + i)));
                 } else {
-                    if (board.getTile(x - i, y + i).getPiece().getPlayer() != player) {
+                    if (board.getTile(x - i, y + i).getPiece().isWhite() != player.isWhiteSide()) {
                         moves.add(new Move(player, startTile, board.getTile(x - i, y + i)));
                     }
                     break;
@@ -282,7 +289,7 @@ public class Functions {
                 if (board.getTile(x + i, y - i).isTileEmpty()) {
                     moves.add(new Move(player, startTile, board.getTile(x + i, y - i)));
                 } else {
-                    if (board.getTile(x + i, y - i).getPiece().getPlayer() != player) {
+                    if (board.getTile(x + i, y - i).getPiece().isWhite() != player.isWhiteSide()) {
                         moves.add(new Move(player, startTile, board.getTile(x + i, y - i)));
                     }
                     break;
@@ -293,7 +300,7 @@ public class Functions {
                 if (board.getTile(x - i, y - i).isTileEmpty()) {
                     moves.add(new Move(player, startTile, board.getTile(x - i, y - i)));
                 } else {
-                    if (board.getTile(x - i, y - i).getPiece().getPlayer() != player) {
+                    if (board.getTile(x - i, y - i).getPiece().isWhite() != player.isWhiteSide()) {
                         moves.add(new Move(player, startTile, board.getTile(x - i, y - i)));
                     }
                     break;
@@ -317,7 +324,7 @@ public class Functions {
                     Tile destination = board.getTile(newX, newY);
                     
                     
-                    if (destination.isTileEmpty() || destination.getPiece().getPlayer() != player) {
+                    if (destination.isTileEmpty() || destination.getPiece().isWhite() != player.isWhiteSide()) {
                         moves.add(new Move(player, startTile, destination));
                     }
                 }
@@ -335,13 +342,14 @@ public class Functions {
 
                 if(newX>0 && newX<8 && newY>=0 && newY<8){
                     Tile destination = board.getTile(newX, newY);
-                    if(destination.isTileEmpty()|| destination.getPiece().getPlayer()!=player){
+                    if(destination.isTileEmpty()|| destination.getPiece().isWhite()!=player.isWhiteSide()){
                         moves.add(new Move(player,startTile,destination));
                     }
                 }
             }
         }
 
+        
         return moves;
     }
 

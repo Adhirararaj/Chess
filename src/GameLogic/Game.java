@@ -34,8 +34,8 @@ public class Game {
     }
     private GameStatus gameStatus;
 
-    public void setStatus(GameStatus status) {
-        this.gameStatus = status;
+    public void setStatus(boolean isWhite) {
+        this.gameStatus = isWhite? GameStatus.WHITE_WIN : GameStatus.BLACK_WIN;
     }
 
     public boolean isGameOver() {
@@ -164,18 +164,17 @@ public class Game {
             }
         }
         
-        if (destPiece != null && destPiece instanceof King) {
-            if (player.isWhiteSide()) {
-                this.setStatus(GameStatus.WHITE_WIN);
-            } else {
-                this.setStatus(GameStatus.BLACK_WIN);
-            }
+        // if(destPiece != null && destPiece instanceof King){
+        //     if (player.isWhiteSide()) {
+        //         this.setStatus(GameStatus.WHITE_WIN);
+        //     } else {
+        //         this.setStatus(GameStatus.BLACK_WIN);
+        //     }
 
-            board.handleGameOver(player.isWhiteSide());
-        }
+        //     board.handleGameOver(player.isWhiteSide());
+        // }
         
         currentTurn = !currentTurn;
-        System.out.println(ChessAI.Functions.evaluateBoard(board));
         
         return true; 
     }
