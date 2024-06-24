@@ -25,4 +25,8 @@ public class Tile {
     public Piece getPiece(){
         return this.piece;
     }
+
+    public boolean isTileEmpty(){
+        return this.piece == null;
+    }
 }

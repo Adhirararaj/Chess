@@ -2,13 +2,18 @@ package Pieces;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import Board.Board;
 import Board.Tile;
 
+import Players.Player;
+
 public abstract class Piece{
+    private Player player;
     private boolean Alive;
     private boolean White;
     protected BufferedImage ImageSheet;
@@ -43,5 +48,10 @@ public abstract class Piece{
         this.Alive = Alive;
     }
 
+    public Player getPlayer(){
+        return player;
+    }
+
     public abstract boolean isValidMove(Board board, Tile start, Tile end);
+    // public abstract List<Move> getPossibleMoves(Board board, Tile startTile);
 }

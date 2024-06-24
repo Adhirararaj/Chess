@@ -1,8 +1,11 @@
 package ChessAI;
 
+import java.util.ArrayList;
 import Board.Board;
 import Board.Tile;
 import Pieces.*;
+import Players.Player;
+import GameLogic.Move;
 
 public class Functions {
     public static int evaluateBoard(Board board) {
@@ -61,4 +64,266 @@ public class Functions {
         }
         return 0;
     }
+
+    public static ArrayList<Move> getAllPossibleMoves(Board board, Player player){
+        ArrayList<Move> allMoves = new ArrayList<>();
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                Tile startTile = board.getTile(i, j);
+                Piece piece = startTile.getPiece();
+                if(piece!= null && piece.getPlayer().equals(player)){
+                    ArrayList<Move> piecemoves = getPossibleMoves(board,startTile);
+                    allMoves.addAll(piecemoves);
+                }
+            }
+        }
+        return allMoves;
+    }
+
+    
+
+    private static ArrayList<Move> getPossibleMoves(Board board , Tile startTile){
+        
+        Piece piece = startTile.getPiece();
+        ArrayList <Move> moves = new ArrayList<>();
+        int x = startTile.getX();
+        int y= startTile.getY();
+        Player player = piece.getPlayer();
+        boolean moved = ((Pawn) piece).moved; 
+
+        if(startTile.getPiece() instanceof Pawn){
+            if(piece.isWhite()){
+                if(x>0 && board.getTile(x-1, y).isTileEmpty()){
+                    moves.add(new Move(player, startTile, board.getTile(x-1, y)));
+                }
+                if (!moved && x > 1 && board.getTile(x - 1, y).isTileEmpty() && board.getTile(x - 2, y).isTileEmpty()) {
+                moves.add(new Move(player, startTile, board.getTile(x - 2, y)));
+                }
+                if (x > 0 && y > 0 && board.getTile(x - 1, y - 1).getPiece() != null &&
+                        !board.getTile(x - 1, y - 1).getPiece().isWhite()) {
+                    moves.add(new Move(player, startTile, board.getTile(x - 1, y - 1)));
+                }
+            }else{
+                if (x < 7 && board.getTile(x+1, y).isTileEmpty()) {
+                    moves.add(new Move(player, startTile, board.getTile(x + 1, y)));
+                }
+                
+                if (!moved && x < 6 && board.getTile(x + 1, y).isTileEmpty() && board.getTile(x + 2, y).isTileEmpty()) {
+                    moves.add(new Move(player, startTile, board.getTile(x + 2, y)));
+                }
+                
+                if (x < 7 && y > 0 && board.getTile(x + 1, y - 1).getPiece() != null &&
+                        board.getTile(x + 1, y - 1).getPiece().isWhite()) {
+                    moves.add(new Move(player, startTile, board.getTile(x + 1, y - 1)));
+                }
+            }
+        }
+
+        if(startTile.getPiece() instanceof Rook){
+            for (int i = x + 1; i < 8; i++) {
+                if (board.getTile(i, y).isTileEmpty()) {
+                    moves.add(new Move(player, startTile, board.getTile(i, y)));
+                } else {
+                    if (board.getTile(i, y).getPiece().getPlayer() != player) {
+                        moves.add(new Move(player, startTile, board.getTile(i, y)));
+                    }
+                    break;
+                }
+            }
+
+            for (int i = x - 1; i >= 0; i--) {
+                if (board.getTile(i, y).isTileEmpty()) {
+                    moves.add(new Move(player, startTile, board.getTile(i, y)));
+                } else {
+                    if (board.getTile(i, y).getPiece().getPlayer() != player) {
+                        moves.add(new Move(player, startTile, board.getTile(i, y)));
+                    }
+                    break;
+                }
+            }
+            
+            for (int i = y + 1; i < 8; i++) {
+                if (board.getTile(x, i).isTileEmpty()) {
+                    moves.add(new Move(player, startTile, board.getTile(x, i)));
+                } else {
+                    if (board.getTile(x, i).getPiece().getPlayer() != player) {
+                        moves.add(new Move(player, startTile, board.getTile(x, i)));
+                    }
+                    break;
+                }
+            }
+            
+            for (int i = y - 1; i >= 0; i--) {
+                if (board.getTile(x, i).isTileEmpty()) {
+                    moves.add(new Move(player, startTile, board.getTile(x, i)));
+                } else {
+                    if (board.getTile(x, i).getPiece().getPlayer() != player) {
+                        moves.add(new Move(player, startTile, board.getTile(x, i)));
+                    }
+                    break;
+                }
+            }
+        }
+
+        if(startTile.getPiece() instanceof Bishop){
+            for(int i =1 ; x + i< 8; i++){
+                if(board.getTile(x+i,y+i).isTileEmpty()){
+                    moves.add(new Move(player, startTile, board.getTile(x+i, y+i)));
+                }else {
+                    if (board.getTile(x + i, y + i).getPiece().getPlayer() != player) {
+                        moves.add(new Move(player, startTile, board.getTile(x + i, y + i)));
+                    }
+                    break;
+                }
+            }
+            for (int i = 1; x - i >= 0 && y + i < 8; i++) {
+                if (board.getTile(x - i, y + i).isTileEmpty()) {
+                    moves.add(new Move(player, startTile, board.getTile(x - i, y + i)));
+                } else {
+                    if (board.getTile(x - i, y + i).getPiece().getPlayer() != player) {
+                        moves.add(new Move(player, startTile, board.getTile(x - i, y + i)));
+                    }
+                    break;
+                }
+            } 
+
+            for (int i = 1; x + i < 8 && y - i >= 0; i++) {
+                if (board.getTile(x + i, y - i).isTileEmpty()) {
+                    moves.add(new Move(player, startTile, board.getTile(x + i, y - i)));
+                } else {
+                    if (board.getTile(x + i, y - i).getPiece().getPlayer() != player) {
+                        moves.add(new Move(player, startTile, board.getTile(x + i, y - i)));
+                    }
+                    break;
+                }
+            }
+
+            for (int i = 1; x - i >= 0 && y - i >= 0; i++) {
+                if (board.getTile(x - i, y - i).isTileEmpty()) {
+                    moves.add(new Move(player, startTile, board.getTile(x - i, y - i)));
+                } else {
+                    if (board.getTile(x - i, y - i).getPiece().getPlayer() != player) {
+                        moves.add(new Move(player, startTile, board.getTile(x - i, y - i)));
+                    }
+                    break;
+                }
+            }
+
+        }
+
+        if(startTile.getPiece() instanceof Queen){
+            for (int i = x + 1; i < 8; i++) {
+                if (board.getTile(i, y).isTileEmpty()) {
+                    moves.add(new Move(player, startTile, board.getTile(i, y)));
+                } else {
+                    if (board.getTile(i, y).getPiece().getPlayer() != player) {
+                        moves.add(new Move(player, startTile, board.getTile(i, y)));
+                    }
+                    break;
+                }
+            }
+
+            for (int i = x - 1; i >= 0; i--) {
+                if (board.getTile(i, y).isTileEmpty()) {
+                    moves.add(new Move(player, startTile, board.getTile(i, y)));
+                } else {
+                    if (board.getTile(i, y).getPiece().getPlayer() != player) {
+                        moves.add(new Move(player, startTile, board.getTile(i, y)));
+                    }
+                    break;
+                }
+            }
+            
+            for (int i = y + 1; i < 8; i++) {
+                if (board.getTile(x, i).isTileEmpty()) {
+                    moves.add(new Move(player, startTile, board.getTile(x, i)));
+                } else {
+                    if (board.getTile(x, i).getPiece().getPlayer() != player) {
+                        moves.add(new Move(player, startTile, board.getTile(x, i)));
+                    }
+                    break;
+                }
+            }
+            
+            for (int i = y - 1; i >= 0; i--) {
+                if (board.getTile(x, i).isTileEmpty()) {
+                    moves.add(new Move(player, startTile, board.getTile(x, i)));
+                } else {
+                    if (board.getTile(x, i).getPiece().getPlayer() != player) {
+                        moves.add(new Move(player, startTile, board.getTile(x, i)));
+                    }
+                    break;
+                }
+            }
+
+            for(int i =1 ; x + i< 8; i++){
+                if(board.getTile(x+i,y+i).isTileEmpty()){
+                    moves.add(new Move(player, startTile, board.getTile(x+i, y+i)));
+                }else {
+                    if (board.getTile(x + i, y + i).getPiece().getPlayer() != player) {
+                        moves.add(new Move(player, startTile, board.getTile(x + i, y + i)));
+                    }
+                    break;
+                }
+            }
+            for (int i = 1; x - i >= 0 && y + i < 8; i++) {
+                if (board.getTile(x - i, y + i).isTileEmpty()) {
+                    moves.add(new Move(player, startTile, board.getTile(x - i, y + i)));
+                } else {
+                    if (board.getTile(x - i, y + i).getPiece().getPlayer() != player) {
+                        moves.add(new Move(player, startTile, board.getTile(x - i, y + i)));
+                    }
+                    break;
+                }
+            } 
+
+            for (int i = 1; x + i < 8 && y - i >= 0; i++) {
+                if (board.getTile(x + i, y - i).isTileEmpty()) {
+                    moves.add(new Move(player, startTile, board.getTile(x + i, y - i)));
+                } else {
+                    if (board.getTile(x + i, y - i).getPiece().getPlayer() != player) {
+                        moves.add(new Move(player, startTile, board.getTile(x + i, y - i)));
+                    }
+                    break;
+                }
+            }
+
+            for (int i = 1; x - i >= 0 && y - i >= 0; i++) {
+                if (board.getTile(x - i, y - i).isTileEmpty()) {
+                    moves.add(new Move(player, startTile, board.getTile(x - i, y - i)));
+                } else {
+                    if (board.getTile(x - i, y - i).getPiece().getPlayer() != player) {
+                        moves.add(new Move(player, startTile, board.getTile(x - i, y - i)));
+                    }
+                    break;
+                }
+            }
+        }
+
+        if(startTile.getPiece() instanceof Knight){
+            int[][] knightMoves = {
+                {x + 2, y + 1}, {x + 2, y - 1}, {x - 2, y + 1}, {x - 2, y - 1},
+                {x + 1, y + 2}, {x + 1, y - 2}, {x - 1, y + 2}, {x - 1, y - 2}
+            };
+        
+            
+            for (int[] move : knightMoves) {
+                int newX = move[0];
+                int newY = move[1];
+                
+                
+                if (newX >= 0 && newX < 8 && newY >= 0 && newY < 8) {
+                    Tile destination = board.getTile(newX, newY);
+                    
+                    
+                    if (destination.isTileEmpty() || destination.getPiece().getPlayer() != player) {
+                        moves.add(new Move(player, startTile, destination));
+                    }
+                }
+            }
+        }
+
+        return moves;
+    }
+
 }
