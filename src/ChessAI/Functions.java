@@ -324,6 +324,24 @@ public class Functions {
             }
         }
 
+        if(startTile.getPiece() instanceof King){
+            int [][] kingMoves = {
+                {x+1 , y},{x-1,y},{x,y+1},{x,y-1},
+                {x+1 , y+1},{x+1,y-1},{x-1,y+1},{x-1,y-1}
+            };
+            for(int[] move:kingMoves){
+                int newX = move[0];
+                int newY = move[1];
+
+                if(newX>0 && newX<8 && newY>=0 && newY<8){
+                    Tile destination = board.getTile(newX, newY);
+                    if(destination.isTileEmpty()|| destination.getPiece().getPlayer()!=player){
+                        moves.add(new Move(player,startTile,destination));
+                    }
+                }
+            }
+        }
+
         return moves;
     }
 
