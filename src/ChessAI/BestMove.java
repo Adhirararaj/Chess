@@ -1,7 +1,5 @@
 package ChessAI;
 
-import java.util.List;
-
 import Board.Board;
 import GameLogic.Game;
 import GameLogic.Move;

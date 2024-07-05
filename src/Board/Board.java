@@ -137,8 +137,8 @@ public class Board extends JPanel {
                             System.out.println(bestMove.getEnd().getX() + " " + bestMove.getEnd().getY());
                             System.out.println("moved");
                         }
-                        updateBoard();
                     }
+                    updateBoard();
                 }
                 else {
                     System.out.println("Invalid move!");

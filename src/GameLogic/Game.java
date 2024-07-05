@@ -88,9 +88,8 @@ public class Game {
         Player player = (currentTurn)? players[0] : players[1];
         Move move = new Move(player, start, end);
         boolean result = this.makeMove(move, currentTurn);
-        board.updateBoard();
         
-        return result;  
+        return result;
     } 
 
     public boolean makeMove(Move move, boolean isWhite){
