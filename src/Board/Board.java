@@ -103,6 +103,7 @@ public class Board extends JPanel {
     public void handleGameOver(boolean whiteWins){
         String message = whiteWins ? "White wins!" : "Black wins!";
         JOptionPane.showMessageDialog(this, message, "Game Over", JOptionPane.INFORMATION_MESSAGE);
+        System.exit(0);
     }
 
     private class TileButtonListener implements ActionListener{

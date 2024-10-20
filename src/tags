@@ -1,0 +1,166 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ACTIVE	GameLogic/Game.java	/^        ACTIVE, $/;"	e	enum:Game.GameStatus	file:
+Alive	Pieces/Piece.java	/^    private boolean Alive;$/;"	f	class:Piece	file:
+BISHOP_TABLE_BLACK	ChessAI/ValueTables.java	/^    public static final int[] BISHOP_TABLE_BLACK = mirror(BISHOP_TABLE_WHITE);$/;"	f	class:ValueTables
+BISHOP_TABLE_WHITE	ChessAI/ValueTables.java	/^    public static final int[] BISHOP_TABLE_WHITE = {$/;"	f	class:ValueTables
+BLACK_WIN	GameLogic/Game.java	/^        BLACK_WIN, $/;"	e	enum:Game.GameStatus	file:
+BOARD_SIZE	Board/Board.java	/^    private static final int BOARD_SIZE = 8;$/;"	f	class:Board	file:
+BackgroundPanel	BackgroundPanel.java	/^    public BackgroundPanel(String imagePath) {$/;"	m	class:BackgroundPanel
+BackgroundPanel	BackgroundPanel.java	/^public class BackgroundPanel extends JPanel {$/;"	c
+BestMove	ChessAI/BestMove.java	/^public class BestMove {$/;"	c
+Bishop	Pieces/Bishop.java	/^    public Bishop(boolean white){$/;"	m	class:Bishop
+Bishop	Pieces/Bishop.java	/^public class Bishop extends Piece{$/;"	c
+Board	Board/Board.java	/^    public Board(Game game){$/;"	m	class:Board
+Board	Board/Board.java	/^package Board;$/;"	p
+Board	Board/Board.java	/^public class Board extends JPanel {$/;"	c
+Board	Board/Tile.java	/^package Board;$/;"	p
+ChessAI	ChessAI/BestMove.java	/^package ChessAI;$/;"	p
+ChessAI	ChessAI/Functions.java	/^package ChessAI;$/;"	p
+ChessAI	ChessAI/ValueTables.java	/^package ChessAI;$/;"	p
+ComputerPlayer	Players/ComputerPlayer.java	/^    public ComputerPlayer(boolean WhiteSide){$/;"	m	class:ComputerPlayer
+ComputerPlayer	Players/ComputerPlayer.java	/^public class ComputerPlayer extends Player {$/;"	c
+FORFEIT	GameLogic/Game.java	/^        FORFEIT, $/;"	e	enum:Game.GameStatus	file:
+Functions	ChessAI/Functions.java	/^public class Functions {$/;"	c
+Functions	Pieces/Functions.java	/^public class Functions {$/;"	c
+Game	GameLogic/Game.java	/^    public Game(Player p1, Player p2){$/;"	m	class:Game
+Game	GameLogic/Game.java	/^public class Game {$/;"	c
+GameLogic	GameLogic/Game.java	/^package GameLogic;$/;"	p
+GameLogic	GameLogic/Move.java	/^package GameLogic;$/;"	p
+GameStatus	GameLogic/Game.java	/^    public enum GameStatus{ $/;"	g	class:Game
+HumanPlayer	Players/HumanPlayer.java	/^    public HumanPlayer(boolean WhiteSide){$/;"	m	class:HumanPlayer
+HumanPlayer	Players/HumanPlayer.java	/^public class HumanPlayer extends Player {$/;"	c
+HumanPlayer	Players/Player.java	/^    protected boolean HumanPlayer;$/;"	f	class:Player
+ImageSheet	Pieces/Piece.java	/^    protected BufferedImage ImageSheet;$/;"	f	class:Piece
+ImageWidth	Pieces/Piece.java	/^    protected int ImageWidth;$/;"	f	class:Piece
+KING_TABLE_BLACK	ChessAI/ValueTables.java	/^    public static final int[] KING_TABLE_BLACK = mirror(KING_TABLE_WHITE);$/;"	f	class:ValueTables
+KING_TABLE_WHITE	ChessAI/ValueTables.java	/^    public static final int[] KING_TABLE_WHITE = {$/;"	f	class:ValueTables
+KNIGHT_TABLE_BLACK	ChessAI/ValueTables.java	/^    public static final int[] KNIGHT_TABLE_BLACK = mirror(KNIGHT_TABLE_WHITE);$/;"	f	class:ValueTables
+KNIGHT_TABLE_WHITE	ChessAI/ValueTables.java	/^    public static final int[] KNIGHT_TABLE_WHITE = {$/;"	f	class:ValueTables
+King	Pieces/King.java	/^	public King(boolean white) $/;"	m	class:King
+King	Pieces/King.java	/^public class King extends Piece { $/;"	c
+Knight	Pieces/Knight.java	/^    public Knight(boolean white){$/;"	m	class:Knight
+Knight	Pieces/Knight.java	/^public class Knight extends Piece {$/;"	c
+Move	GameLogic/Move.java	/^    public Move(Player player, Tile startTile, Tile endTile) {$/;"	m	class:Move
+Move	GameLogic/Move.java	/^public class Move {$/;"	c
+PAWN_TABLE_BLACK	ChessAI/ValueTables.java	/^    public static final int[] PAWN_TABLE_BLACK = mirror(PAWN_TABLE_WHITE);$/;"	f	class:ValueTables
+PAWN_TABLE_WHITE	ChessAI/ValueTables.java	/^    public static final int[] PAWN_TABLE_WHITE = {$/;"	f	class:ValueTables
+Pawn	Pieces/Pawn.java	/^    public Pawn (boolean white){$/;"	m	class:Pawn
+Pawn	Pieces/Pawn.java	/^public class Pawn extends Piece {$/;"	c
+Piece	Pieces/Piece.java	/^    public Piece(boolean White){$/;"	m	class:Piece
+Piece	Pieces/Piece.java	/^public abstract class Piece{$/;"	c
+Pieces	Pieces/Bishop.java	/^package Pieces;$/;"	p
+Pieces	Pieces/Functions.java	/^package Pieces;$/;"	p
+Pieces	Pieces/King.java	/^package Pieces;$/;"	p
+Pieces	Pieces/Knight.java	/^package Pieces;$/;"	p
+Pieces	Pieces/Pawn.java	/^package Pieces;$/;"	p
+Pieces	Pieces/Piece.java	/^package Pieces;$/;"	p
+Pieces	Pieces/Queen.java	/^package Pieces;$/;"	p
+Pieces	Pieces/Rook.java	/^package Pieces;$/;"	p
+Player	Players/Player.java	/^public abstract class Player {$/;"	c
+Players	Players/ComputerPlayer.java	/^package Players;$/;"	p
+Players	Players/HumanPlayer.java	/^package Players;$/;"	p
+Players	Players/Player.java	/^package Players;$/;"	p
+QUEEN_TABLE_BLACK	ChessAI/ValueTables.java	/^    public static final int[] QUEEN_TABLE_BLACK = mirror(QUEEN_TABLE_WHITE);$/;"	f	class:ValueTables
+QUEEN_TABLE_WHITE	ChessAI/ValueTables.java	/^    public static final int[] QUEEN_TABLE_WHITE = {$/;"	f	class:ValueTables
+Queen	Pieces/Queen.java	/^    public Queen(boolean white){$/;"	m	class:Queen
+Queen	Pieces/Queen.java	/^public class Queen extends Piece{$/;"	c
+RESIGNATION	GameLogic/Game.java	/^        RESIGNATION $/;"	e	enum:Game.GameStatus	file:
+ROOK_TABLE_BLACK	ChessAI/ValueTables.java	/^    public static final int[] ROOK_TABLE_BLACK = mirror(ROOK_TABLE_WHITE);$/;"	f	class:ValueTables
+ROOK_TABLE_WHITE	ChessAI/ValueTables.java	/^    public static final int[] ROOK_TABLE_WHITE = {$/;"	f	class:ValueTables
+Rook	Pieces/Rook.java	/^    public Rook(boolean white){$/;"	m	class:Rook
+Rook	Pieces/Rook.java	/^public class Rook extends Piece {$/;"	c
+STALEMATE	GameLogic/Game.java	/^        STALEMATE, $/;"	e	enum:Game.GameStatus	file:
+Tile	Board/Tile.java	/^    public Tile(int x, int y){$/;"	m	class:Tile
+Tile	Board/Tile.java	/^public class Tile {$/;"	c
+TileButtonListener	Board/Board.java	/^        TileButtonListener(Tile tile){$/;"	m	class:Board.TileButtonListener
+TileButtonListener	Board/Board.java	/^    private class TileButtonListener implements ActionListener{$/;"	c	class:Board
+ValueTables	ChessAI/ValueTables.java	/^public class ValueTables{$/;"	c
+WHITE_WIN	GameLogic/Game.java	/^        WHITE_WIN, $/;"	e	enum:Game.GameStatus	file:
+White	Pieces/Piece.java	/^    private boolean White;$/;"	f	class:Piece	file:
+WhiteSide	Players/Player.java	/^    protected boolean WhiteSide;$/;"	f	class:Player
+actionPerformed	Board/Board.java	/^        public void actionPerformed(ActionEvent e){$/;"	m	class:Board.TileButtonListener
+backgroundImage	BackgroundPanel.java	/^    private Image backgroundImage;$/;"	f	class:BackgroundPanel	file:
+board	Board/Board.java	/^    private Tile[][] board = new Tile[BOARD_SIZE][BOARD_SIZE];$/;"	f	class:Board	file:
+board	GameLogic/Game.java	/^    private Board board;$/;"	f	class:Game	file:
+buttons	Board/Board.java	/^    private JButton[][] buttons = new JButton[BOARD_SIZE][BOARD_SIZE];$/;"	f	class:Board	file:
+createStyledButton	main.java	/^    private static JButton createStyledButton(String text, int yPosition) {$/;"	m	class:main	file:
+currentTurn	GameLogic/Game.java	/^    public boolean currentTurn;$/;"	f	class:Game
+depth	GameLogic/Game.java	/^    public static int depth;$/;"	f	class:Game
+endTile	Board/Board.java	/^    private Tile endTile;$/;"	f	class:Board	file:
+endTile	GameLogic/Move.java	/^    protected Tile endTile;$/;"	f	class:Move
+evaluateBoard	ChessAI/Functions.java	/^    public static int evaluateBoard(Board board) {$/;"	m	class:Functions
+findBestMove	ChessAI/BestMove.java	/^    public static Move findBestMove(Board board){$/;"	m	class:BestMove
+game	Board/Board.java	/^    public Game game;$/;"	f	class:Board
+gameStatus	GameLogic/Game.java	/^    private GameStatus gameStatus;$/;"	f	class:Game	file:
+getAllPossibleMoves	ChessAI/Functions.java	/^    public static ArrayList<Move> getAllPossibleMoves(Board board, boolean isWhite){$/;"	m	class:Functions
+getButton	Board/Board.java	/^    public JButton getButton(int x, int y){$/;"	m	class:Board
+getEnd	GameLogic/Move.java	/^    public Tile getEnd(){$/;"	m	class:Move
+getPiece	Board/Tile.java	/^    public Piece getPiece(){$/;"	m	class:Tile
+getPieceKilled	GameLogic/Move.java	/^    public Piece getPieceKilled(){$/;"	m	class:Move
+getPieceMoved	GameLogic/Move.java	/^    public Piece getPieceMoved(){$/;"	m	class:Move
+getPieceValue	ChessAI/Functions.java	/^    private static int getPieceValue(Piece piece) {$/;"	m	class:Functions	file:
+getPlayer	GameLogic/Move.java	/^    public Player getPlayer(){$/;"	m	class:Move
+getPossibleMoves	ChessAI/Functions.java	/^    private static ArrayList<Move> getPossibleMoves(Board board , Tile startTile, Player player){$/;"	m	class:Functions	file:
+getStart	GameLogic/Move.java	/^    public Tile getStart(){$/;"	m	class:Move
+getStatus	GameLogic/Game.java	/^    public GameStatus getStatus() {$/;"	m	class:Game
+getTile	Board/Board.java	/^    public Tile getTile(int x, int y){$/;"	m	class:Board
+getX	Board/Tile.java	/^    public int getX(){$/;"	m	class:Tile
+getY	Board/Tile.java	/^    public int getY(){$/;"	m	class:Tile
+handleGameOver	Board/Board.java	/^    public void handleGameOver(boolean whiteWins){$/;"	m	class:Board
+image	Pieces/Piece.java	/^    public ImageIcon image;$/;"	f	class:Piece
+initializeBoard	Board/Board.java	/^    public void initializeBoard() {$/;"	m	class:Board
+isAlive	Pieces/Piece.java	/^    public boolean isAlive(){$/;"	m	class:Piece
+isGameOver	Board/Board.java	/^    public boolean isGameOver(){$/;"	m	class:Board
+isGameOver	GameLogic/Game.java	/^    public boolean isGameOver() {$/;"	m	class:Game
+isHumanPlayer	Players/Player.java	/^    public boolean isHumanPlayer(){$/;"	m	class:Player
+isTileEmpty	Board/Tile.java	/^    public boolean isTileEmpty(){$/;"	m	class:Tile
+isTileSafe	Pieces/Functions.java	/^    public static boolean isTileSafe(Board board, boolean opponentColor, Tile tile) {$/;"	m	class:Functions
+isUnderDiagonalAttack	Pieces/Functions.java	/^    private static boolean isUnderDiagonalAttack(Board board, boolean opponentColor, Tile tile){$/;"	m	class:Functions	file:
+isUnderKingAttack	Pieces/Functions.java	/^    private static boolean isUnderKingAttack(Board board, boolean opponentColor, Tile tile){$/;"	m	class:Functions	file:
+isUnderKnightAttack	Pieces/Functions.java	/^    private static boolean isUnderKnightAttack(Board board, boolean opponentColor, Tile tile){$/;"	m	class:Functions	file:
+isUnderPawnAttack	Pieces/Functions.java	/^    private static boolean isUnderPawnAttack(Board board, boolean opponentColor, Tile tile){$/;"	m	class:Functions	file:
+isUnderStraightAttack	Pieces/Functions.java	/^    private static boolean isUnderStraightAttack(Board board, boolean opponentColor, Tile tile){$/;"	m	class:Functions	file:
+isValidMove	Pieces/Bishop.java	/^    public boolean isValidMove(Board board, Tile start, Tile end) {$/;"	m	class:Bishop
+isValidMove	Pieces/King.java	/^	public boolean isValidMove(Board board, Tile start, Tile end){$/;"	m	class:King
+isValidMove	Pieces/Knight.java	/^    public boolean isValidMove(Board board, Tile start, Tile end){$/;"	m	class:Knight
+isValidMove	Pieces/Pawn.java	/^    public boolean isValidMove(Board board, Tile start, Tile end){$/;"	m	class:Pawn
+isValidMove	Pieces/Piece.java	/^    public abstract boolean isValidMove(Board board, Tile start, Tile end);$/;"	m	class:Piece
+isValidMove	Pieces/Queen.java	/^    public boolean isValidMove(Board board, Tile start, Tile end) {$/;"	m	class:Queen
+isValidMove	Pieces/Rook.java	/^    public boolean isValidMove(Board board, Tile start, Tile end) {$/;"	m	class:Rook
+isWhite	Pieces/Piece.java	/^    public boolean isWhite(){$/;"	m	class:Piece
+isWhiteSide	Players/Player.java	/^    public boolean isWhiteSide(){$/;"	m	class:Player
+loadImages	Pieces/Piece.java	/^    private void loadImages() {$/;"	m	class:Piece	file:
+main	main.java	/^    public static void main(String[] args) {$/;"	m	class:main
+main	main.java	/^public class main {$/;"	c
+makeMove	GameLogic/Game.java	/^    public boolean makeMove(Move move, boolean isWhite){$/;"	m	class:Game
+minimax	ChessAI/BestMove.java	/^    private static int minimax(Board board, int depth, int alpha, int beta, boolean isWhiteTurn) {$/;"	m	class:BestMove	file:
+mirror	ChessAI/ValueTables.java	/^    public static int[] mirror(int[] table) {$/;"	m	class:ValueTables
+moved	Pieces/Pawn.java	/^    public boolean moved = false;$/;"	f	class:Pawn
+movesPlayed	GameLogic/Game.java	/^    private List<Move> movesPlayed;$/;"	f	class:Game	file:
+paintComponent	BackgroundPanel.java	/^    protected void paintComponent(Graphics g) {$/;"	m	class:BackgroundPanel
+piece	Board/Tile.java	/^    private Piece piece = null;$/;"	f	class:Tile	file:
+pieceKilled	GameLogic/Move.java	/^    protected Piece pieceKilled;$/;"	f	class:Move
+pieceMoved	GameLogic/Move.java	/^    protected Piece pieceMoved;$/;"	f	class:Move
+player	GameLogic/Move.java	/^    protected Player player;$/;"	f	class:Move
+playerMove	GameLogic/Game.java	/^    public boolean playerMove(Tile start, Tile end){$/;"	m	class:Game
+players	GameLogic/Game.java	/^    public Player[] players = new Player[2];$/;"	f	class:Game
+selectLevel	main.java	/^    private static void selectLevel(){$/;"	m	class:main	file:
+setAlive	Pieces/Piece.java	/^    public void setAlive(boolean Alive){$/;"	m	class:Piece
+setMoved	Pieces/Pawn.java	/^    public void setMoved(boolean moved){$/;"	m	class:Pawn
+setPiece	Board/Tile.java	/^    public void setPiece(Piece piece){$/;"	m	class:Tile
+setPieceKilled	GameLogic/Move.java	/^    public void setPieceKilled(Piece piece){$/;"	m	class:Move
+setPieceMoved	GameLogic/Move.java	/^    public void setPieceMoved(Piece piece){$/;"	m	class:Move
+setStatus	GameLogic/Game.java	/^    public void setStatus(boolean isWhite) {$/;"	m	class:Game
+startTile	Board/Board.java	/^    private Tile startTile;$/;"	f	class:Board	file:
+startTile	GameLogic/Move.java	/^    protected Tile startTile;$/;"	f	class:Move
+tile	Board/Board.java	/^        private Tile tile;$/;"	f	class:Board.TileButtonListener	file:
+toString	GameLogic/Move.java	/^    public String toString() {$/;"	m	class:Move
+undoMove	GameLogic/Game.java	/^    public void undoMove() {$/;"	m	class:Game
+updateBoard	Board/Board.java	/^    public void updateBoard(){$/;"	m	class:Board
+x	Board/Tile.java	/^    private int x;$/;"	f	class:Tile	file:
+y	Board/Tile.java	/^    private int y;$/;"	f	class:Tile	file:
