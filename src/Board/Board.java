@@ -16,6 +16,7 @@ public class Board extends JPanel {
     private Tile[][] board = new Tile[BOARD_SIZE][BOARD_SIZE];
     private JButton[][] buttons = new JButton[BOARD_SIZE][BOARD_SIZE];
     private Tile startTile;
+    public boolean isAI = false;
     private Tile endTile;
     public Game game;
     public Board(Game game){

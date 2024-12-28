@@ -6,6 +6,7 @@ import GameLogic.Move;
 
 public class BestMove {
     public static Move findBestMove(Board board){
+        board.isAI = true;
         int bestValue = Integer.MAX_VALUE;
         Move bestMove = null;
 
@@ -19,6 +20,8 @@ public class BestMove {
                 }
             }
         }
+
+        board.isAI = false;
         return bestMove;
     }
 

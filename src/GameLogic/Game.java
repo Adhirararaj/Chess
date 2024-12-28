@@ -130,7 +130,7 @@ public class Game {
         if(sourcePiece instanceof Pawn){
             if((sourcePiece.isWhite() && move.getEnd().getX() == 0) || (!sourcePiece.isWhite() && move.getEnd().getX() == 7)){
                 Piece newPiece = null;
-                if(players[1] instanceof ComputerPlayer && !currentTurn){
+                if(board.isAI){
                     newPiece = new Queen(false);
                 }
                 else{
